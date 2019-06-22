@@ -13,6 +13,7 @@ defmodule Floki.Mixfile do
       elixir: "~> 1.6",
       package: package(),
       deps: deps(),
+      elixirc_paths: elixirc_paths(Mix.env()),
       aliases: aliases(),
       dialyzer: [
         plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
@@ -106,4 +107,8 @@ defmodule Floki.Mixfile do
       }
     }
   end
+
+  # Specifies which paths to compile per environment.
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end
